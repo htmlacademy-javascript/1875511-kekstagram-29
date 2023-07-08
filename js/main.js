@@ -42,16 +42,18 @@ const createPhotoDescription = function () {
   const randomIdIndex = getRandomInteger(1, 25);
   const randomUrlIndex = getRandomInteger(1, 25);
   const randomLikesIndex = getRandomInteger(15, 200);
+  const randomCommentIndex = getRandomInteger(0, 30);
 
   return [{
     id: randomIdIndex,
     url: `'photos/${(randomUrlIndex)}.jpg'`,
     description: 'Описание фотографии',
     likes: randomLikesIndex,
-    comments: [createComments()]
+    comments: Array.from({length: randomCommentIndex}, createComments),
   }];
 };
 
 const createPhotoDescriptions = Array.from({length: 25}, createPhotoDescription);
 
 createPhotoDescriptions();
+

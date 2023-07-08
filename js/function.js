@@ -13,4 +13,3 @@ function isPalendrom(rawString) {
 }
 
 isPalendrom('Т оп   от');
-

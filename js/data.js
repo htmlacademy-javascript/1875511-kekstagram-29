@@ -38,13 +38,13 @@ const createPhoto = function () {
   const randomLikesIndex = getRandomInteger(15, 200);
   const randomCommentIndex = getRandomInteger(0, 30);
 
-  return [{
+  return {
     id: randomIdIndex,
-    url: `'photos/${(randomUrlIndex)}.jpg'`,
+    url: `photos/${(randomUrlIndex)}.jpg`,
     description: 'Описание фотографии',
     likes: randomLikesIndex,
     comments: Array.from({length: randomCommentIndex}, createComments),
-  }];
+  };
 };
 
 const createPhotos = Array.from({length: 25}, createPhoto);

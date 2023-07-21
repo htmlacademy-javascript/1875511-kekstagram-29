@@ -26,25 +26,30 @@ const createComments = function () {
 
   return {
     id: randomCommentIdIndex,
-    avatar: `'img/avatar-${(randomAvatarIndex)}.svg'`,
+    avatar: `img/avatar-${(randomAvatarIndex)}.svg`,
     message: MESSAGES[randomMessageIndex],
     name: NAMES[randomNameIndex],
   };
 };
 
+let idCounter = 1;
+
 const createPhoto = function () {
-  const randomIdIndex = getRandomInteger(1, 25);
-  const randomUrlIndex = getRandomInteger(1, 25);
+  const url = idCounter <= 25 ? idCounter : getRandomInteger(1, 25);
   const randomLikesIndex = getRandomInteger(15, 200);
   const randomCommentIndex = getRandomInteger(0, 30);
 
-  return {
-    id: randomIdIndex,
-    url: `photos/${(randomUrlIndex)}.jpg`,
+  const photo = {
+    id: idCounter,
+    url: `photos/${url}.jpg`,
     description: 'Описание фотографии',
     likes: randomLikesIndex,
     comments: Array.from({length: randomCommentIndex}, createComments),
   };
+
+  idCounter++;
+
+  return photo;
 };
 
 const createPhotos = Array.from({length: 25}, createPhoto);
